@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+<div class="container">
+  <h1>Welcome!</h1>
+  <a href="/tweet/new"
+    ><button type="button" class="btn btn-dark">New Post</button></a
+  >
+  <div class="row row-cols-2 row-cols-md-2 g-4">
+    <div class="col">
+      <% for(let t of tweets){%>
+      <div class="card">
+        <img src="/images/<%= t.img %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= t.username %></h5>
+          <p class="card-texts"><%= t.comment %></p>
+        </div>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary">Edit</button>
+        <button type="button" class="btn btn-outline-primary">Delete</button>
+      </div>
+      <%}%>
+    </div>
+  </div>
+</div>
+<%- include("partials/footer") %>

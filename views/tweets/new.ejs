@@ -1,0 +1,36 @@
+<%- include("partials/header") %>
+
+<div class="container">
+  <form action="/tweet" method="POST">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="username"
+        name="username"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Example textarea</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        name="comment"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="formFile" class="form-label"
+        >Default file input example</label
+      >
+      <input class="form-control" type="file" id="formFile" name="img" />
+    </div>
+    <button>Submit</button>
+  </form>
+</div>
+
+<%- include("partials/footer") %>
