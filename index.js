@@ -19,25 +19,25 @@ app.use(express.urlencoded({ extended: true })); //url payloads
 
 let tweets = [
   {
-    id: 131232,
+    id: uuid(),
     username: "tdr3215",
     comment: "omg he is beautiful",
     img: "bts.jpeg",
   },
   {
-    id: 1233122,
+    id: uuid(),
     username: "scarymonkey92",
     comment: "They're soo pretty",
     img: "blackpink.jpeg",
   },
   {
-    id: 646546,
+    id: uuid(),
     username: "staycgirl69",
     comment: "comeback???!?!?",
     img: "monstax.jpeg",
   },
   {
-    id: 98867,
+    id: uuid(),
     username: "nexlvl83",
     comment: "3rd guy from the left is foine!",
     img: "seventeen.jpeg",
@@ -56,9 +56,8 @@ app.get("/tweet/new", (req, res) => {
 
 app.post("/tweet", (req, res) => {
   const { username, comment, img } = req.body;
-  tweets.push({ username, comment, img, id: 234567 });
+  tweets.push({ username, comment, img, id: uuid() });
   res.redirect("/tweet");
-  console.log(img);
 });
 
 // SHOW POST
@@ -68,14 +67,6 @@ app.get("/tweet/:id", (req, res) => {
   const tweet = tweets.find((t) => t.id === id);
   res.render("tweets/show", { tweet });
 });
-
-// app.get("/tweet/:id", (req, res) => {
-//   const { id } = req.params; //params is equal to the id in the url
-//   const tweeter = tweets.find((t) => {
-//     t.id === id;
-//   });
-//   res.render("tweets/show", { tweeter });
-// });
 
 app.listen("8080", () => {
   console.log("LISTENING ON PORT 8080");

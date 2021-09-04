@@ -7,7 +7,6 @@
   <div class="row row-cols-2 row-cols-md-2 g-4">
     <div class="col">
       <% for(let t of tweets){%>
-      <a href="/tweet/:<%= t.id %> ">Details</a>
       <div class="card">
         <img src="/images/<%= t.img %>" class="card-img-top" alt="..." />
         <div class="card-body">
@@ -19,6 +18,7 @@
         <button type="button" class="btn btn-outline-primary">Edit</button>
         <button type="button" class="btn btn-outline-primary">Delete</button>
       </div>
+      <a href="/tweet/<%= t.id %> ">Details</a>
 
       <%}%>
     </div>
