@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+
+<div class="container">
+  <form action="/tweet/<%= tweet.id %>?_method=PATCH" method="POST">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Username</label>
+      <input
+        type="text"
+        readonly
+        class="form-control-plaintext"
+        id="staticEmail"
+        value="<%= tweet.username %> "
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Comment</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        name="comment"
+      >
+    <%= tweet.comment %> 
+    </textarea
+      >
+    </div>
+
+    <button>Save</button>
+  </form>
+  <a href="/tweet">Back to Homepage</a>
+</div>
+
+<%- include("partials/footer") %>

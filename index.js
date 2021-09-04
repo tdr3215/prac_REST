@@ -3,7 +3,7 @@ const express = require("express");
 const ejs = require("ejs");
 const path = require("path");
 const { v4: uuid } = require("uuid");
-
+const methodOverride = require("method-override");
 uuid();
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 app.use(express.json()); //json payloads
 app.use(express.urlencoded({ extended: true })); //url payloads
-// app.use(methodOverride("_method"));
+app.use(methodOverride("_method"));
 
 // Array of Tweets/Objects
 
@@ -66,6 +66,22 @@ app.get("/tweet/:id", (req, res) => {
   const { id } = req.params;
   const tweet = tweets.find((t) => t.id === id);
   res.render("tweets/show", { tweet });
+});
+
+// PATCH POST
+
+app.patch("/tweet/:id", (req, res) => {
+  const { id } = req.params;
+  const newCommentText = req.body.comment;
+  const foundComment = tweets.find((t) => t.id === id);
+  foundComment.comment = newCommentText;
+  res.redirect("/tweet");
+});
+
+app.get("/tweet/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const tweet = tweets.find((t) => t.id === id);
+  res.render("tweets/edit", { tweet });
 });
 
 app.listen("8080", () => {
