@@ -84,6 +84,14 @@ app.get("/tweet/:id/edit", (req, res) => {
   res.render("tweets/edit", { tweet });
 });
 
+// DELETE POST
+
+app.delete("/tweet/:id", (req, res) => {
+  const { id } = req.params;
+  tweets = tweets.filter((t) => t.id !== id);
+  res.redirect("/tweet");
+});
+
 app.listen("8080", () => {
   console.log("LISTENING ON PORT 8080");
 });

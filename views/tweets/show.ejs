@@ -9,11 +9,11 @@
               <p class="card-texts"><%= tweet.comment %></p>
             </div>
           </div>
-          <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">Edit</button>
-            <button type="button" class="btn btn-outline-primary">Delete</button>
-          </div>
-          <a href="/tweet/<%= tweet.id %> ">Details</a>
+
+          <form method="POST" action="/tweet/<%= tweet.id %>?_method=DELETE ">
+            <button class="btn btn-outline-primary">Delete</button>
+          </form>
+  <a href="/tweet">Back to Homepage</a>
         
         </div>
       </div>
